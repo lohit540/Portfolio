@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Webpage</title>
+    <style>
+        /* Root variables for ocean theme colors */
+        :root {
+            --ocean-blue: #1e3d58; /* Dark ocean blue */
+            --light-blue: #66a3cc; /* Light ocean blue */
+            --sand-color: #f4e1a1; /* Soft sand color */
+            --white: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+            --accent-color: #00bcd4; /* Aqua accent color */
+        }
+
+        /* General Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("{% static 'images/a.jpg' %}"); /* Ocean background image */
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: var(--white);
+            overflow: hidden;
+            text-align: center;
+            transition: background-color 0.5s ease;
+        }
+
+        /* Content Box Styling */
+        .content {
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for readability */
+            border-radius: 15px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+            backdrop-filter: blur(8px); /* Frosted glass effect */
+            max-width: 600px;
+            width: 100%;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        /* Header Styling */
+        h1 {
+            color: var(--accent-color);
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: slideIn 1.5s ease-out forwards;
+        }
+
+        /* Paragraph Styling */
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        /* Resume Link Styling */
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: rgba(0, 188, 212, 0.1); /* Transparent background for the button */
+            border: 2px solid var(--accent-color);
+            transition: background-color 0.3s, transform 0.3s;
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+            animation-delay: 1.5s;
+        }
+
+        /* Hover Effect for Link */
+        a:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        /* Keyframes for Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Main Content Box -->
+    <div class="content">
+        <h1>Welcome to My Webpage</h1>
+        <p>Welcome to my portfolio. I am a sincere student with a passion for creating beautiful, user-friendly websites.</p>
+        <p><a href="{% url 'resume' %}">View My Resume</a></p>
+    </div>
+</body>
+</html>
